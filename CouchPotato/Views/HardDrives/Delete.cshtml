@@ -1,0 +1,23 @@
+﻿@model CouchPotato.Models.HardDrives
+
+@{
+    ViewBag.Title = "Delete HD";
+}
+<div style="font-family:Arial">
+    <h3>Delete Hard Drive</h3>
+    <hr />
+    <h3>Are you sure you want to delete the Hard Drive - @Html.DisplayFor(model => model.Name) ?</h3>
+    <div>     
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-info" />
+            </div>
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>

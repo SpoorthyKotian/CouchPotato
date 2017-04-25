@@ -1,0 +1,22 @@
+﻿
+@model CouchPotato.Models.HardDrives
+
+@{
+    ViewBag.Title = "HD Details";
+}
+<div style="font-family:Arial">
+    <h3>Hard Drive Details</h3>
+    <hr />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">@Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name)</div>
+        </div>
+    </div>
+
+    <br>
+    
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.HDId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

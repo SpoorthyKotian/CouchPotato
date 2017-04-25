@@ -1,0 +1,92 @@
+﻿@model CouchPotato.ViewModels.MovieDetail
+
+@{
+    ViewBag.Title = "Movie Details";
+}
+
+<div style="font-family:Arial">
+    <h2>@Html.DisplayFor(model => model.MoviesList.MovieName)</h2>
+    <hr />
+    <div class="row" style="margin-bottom:10px">
+        <div class="col-md-3">
+            <img src="@Model.MovieDetails.Poster" width="200" />
+        </div>
+        <div class="col-md-9">
+            <h4> @Html.DisplayFor(model => model.MovieDetails.Plot)</h4>
+            <div class="row" style="margin-top:10px">
+                <div class="col-md-9">
+                    <dl class="dl-horizontal">
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MovieDetails.Year)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.MovieDetails.Year)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MovieDetails.Runtime)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.MovieDetails.Runtime)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MovieDetails.Language)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.MovieDetails.Language)
+                        </dd>
+                       
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Genres)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Genres)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Actors)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Actors)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MovieDetails.IMDBRating)
+                        </dt>
+
+                        <dd>
+                           
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                if (i <= Model.MovieDetails.IMDBRating / 2)
+                                {
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                }
+                                else
+                                {
+                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                }
+
+                            }
+                             (@Html.DisplayFor(model => model.MovieDetails.IMDBRating)/10) 
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+
+    <p>
+        @Html.ActionLink("Back Home", "Index", "Home")
+    </p>
+</div>

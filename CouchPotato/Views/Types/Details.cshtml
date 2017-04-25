@@ -1,0 +1,19 @@
+﻿@model CouchPotato.Models.Types
+
+@{
+    ViewBag.Title = "Type Details";
+}
+
+<div style="font-family:Arial">
+    <h2>Type Details</h2>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">@Html.DisplayNameFor(model => model.TypeName) : @Html.DisplayFor(model => model.TypeName)</div>
+        </div>
+    </div>
+    <hr />
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.TypeId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

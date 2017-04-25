@@ -1,0 +1,19 @@
+﻿@model CouchPotato.Models.Languages
+
+@{
+    ViewBag.Title = "Language Details";
+}
+
+<div style="font-family:Arial">
+    <h2>Language Details</h2>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">@Html.DisplayNameFor(model => model.Language) : @Html.DisplayFor(model => model.Language)</div>
+        </div>
+    </div>
+    <hr />
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

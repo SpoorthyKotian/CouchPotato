@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CouchPotato.Models.Types>
+
+@{
+    ViewBag.Title = "Types";
+}
+
+<div style="font-family:Arial">
+    <h2>Types</h2>
+    <div class="row">
+        <a id="addType" class="btn btn-primary" href="@Url.RouteUrl("AddType")" role="button">Add New Type</a>
+    </div>
+   </br>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeName)
+            </th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TypeId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.TypeId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TypeId })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

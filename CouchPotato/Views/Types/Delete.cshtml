@@ -1,0 +1,34 @@
+﻿@model CouchPotato.Models.Types
+
+@{
+    ViewBag.Title = "Delete Type";
+}
+
+<div style="font-family:Arial">
+    <h2>Delete Type</h2>
+
+    <h3>Are you sure you want to delete the type -  @Html.DisplayFor(model => model.TypeName) ?</h3>
+    <div>
+        <hr />
+        @*<dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.TypeName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TypeName)
+                </dd>
+
+            </dl>*@
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-info" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>

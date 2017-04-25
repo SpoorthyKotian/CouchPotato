@@ -1,0 +1,20 @@
+﻿@model CouchPotato.Models.HomeFilter
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div style="font-family:Arial">
+    <h2>Welcome to Couch Potato</h2>
+    <hr />
+    <div class="row">
+
+        @foreach (var item in Model.MovieDetails)
+        {
+            <div class="col-md-3" style="text-align:center; margin-top: 30px;">
+                <a href="@Url.RouteUrl("MovieDetails", new { id = item.MovieId })"> <img src="@item.Poster" id="@item.MovieId" width="200" /> </a>
+            </div>
+        }
+
+    </div>
+</div>

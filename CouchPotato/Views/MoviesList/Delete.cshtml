@@ -1,0 +1,24 @@
+﻿@model CouchPotato.Models.MoviesList
+
+@{
+    ViewBag.Title = "Delete MovieList";
+}
+
+<div style="font-family:Arial">
+    <h2>Delete Movie</h2>
+
+    <h3>Are you sure you want to delete the Movie - @Html.DisplayFor(model => model.MovieName) ?</h3>
+    <div>
+        <hr />
+       
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-info" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,62 @@
+﻿@model PagedList.IPagedList<CouchPotato.Models.MoviesList>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Movies List";
+}
+<div style="font-family:Arial">
+    <h2>Movies List</h2>
+
+    <div class="row">
+        <a id="addMov" class="btn btn-primary" href="@Url.RouteUrl("AddMovie")" role="button">Add new Movie</a>
+        <a id="syncAllMov" class="btn btn-primary" href="@Url.RouteUrl("SyncAllMovies")" role="button">Sync all Movies</a>
+
+        @*<div class="col-xs-6 col-md-4">@Html.ActionLink("Add new Movie", "Create")</div>
+            <div class="col-xs-6 col-md-4">@Html.ActionLink("Sync all Movies", "SyncAll")</div>*@
+
+    </div>
+    <br />
+    @using (Html.BeginForm("Index", "MoviesList", FormMethod.Get))
+    {
+        <p>
+            Find by Movie name: @Html.TextBox("SearchMovie", ViewBag.CurrentFilter as string)
+            <input type="submit" value="Search" class="btn btn-info" />
+        </p>
+    }
+
+    <table class="table">
+        @*<tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MovieName)
+                </th>
+                <th></th>
+            </tr>*@
+        <tr>
+            <th>
+                @Html.ActionLink("Movie Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MovieName)
+                </td>
+                <td>
+                    @Html.ActionLink("Sync Movie", "Sync", new { id = item.MovieId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MovieId })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

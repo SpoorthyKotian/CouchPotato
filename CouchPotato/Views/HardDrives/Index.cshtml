@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CouchPotato.Models.HardDrives>
+
+@{
+    ViewBag.Title = "Hard Drives";
+}
+
+<div style="font-family:Arial">
+    <h3>Hard Drives</h3>
+
+    <div class="row">
+        <a id="addHD" class="btn btn-primary" href="@Url.RouteUrl("AddHardDrive")" role="button">Add New Hard Drive</a>
+    </div>
+    <br />
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.HDId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.HDId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.HDId })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

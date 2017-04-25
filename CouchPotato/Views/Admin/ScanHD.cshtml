@@ -1,0 +1,49 @@
+﻿@model CouchPotato.ViewModels.ScanHD
+
+@{
+    ViewBag.Title = "Scan";
+}
+
+<div style="font-family:Arial">
+    @using (Html.BeginForm("ScanHD", "Admin", FormMethod.Post))
+    {
+        <form method="post">
+            <h3>Welcome to Admin Page</h3>
+            <hr />
+            <div class="form-group">
+                <label for="HDlabel">Select your Hard Drive</label>
+                <select name="Harddrives">
+                    <option value="">Select a drive:</option>
+                    @foreach (var harddrive in Model.hardDrives)
+                {
+                        <option value="@(harddrive.HDId)">@(harddrive.Name)</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="typelabel">Select Type:</label>
+                @foreach (var type in Model.types)
+                {
+                    <label class="radio-inline">
+                        @{
+                            var defaultChecked = string.Empty;
+                            if (type.TypeName == "Movies")
+                            {
+                                defaultChecked = "checked";
+                            }
+                        }
+                        <input type="radio" name="Type" id="typeRadio" value="@(type.TypeId)" @(defaultChecked)>
+                        @(type.TypeName)
+                    </label>
+                            }
+            </div>
+            <div>
+                <label for="pathlabel">Drive Path:</label>
+                @Html.TextBox("drivePath")
+
+            </div>
+            <br>
+            <button type="submit" class="btn btn-info">Scan Directory</button>
+        </form>
+                            }
+</div>
