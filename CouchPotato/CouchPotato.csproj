@@ -270,7 +270,6 @@
     <Content Include="Views\Types\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_PublicSideNav.cshtml" />
     <Content Include="Views\Session\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_LoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

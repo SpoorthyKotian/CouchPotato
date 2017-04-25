@@ -8,9 +8,8 @@
             <ul class="nav collapse" id="submenu1" role="menu" aria-labelledby="btn-1">
                 @foreach (var gen in Model.Genre)
                 {
-                    <li>@gen.Genre</li>
+                    <li><a href="#">@gen.Genre</a></li>
                 }
-                @*<li><a href="#">Action</a></li>*@
             </ul>
         </li>
         <li>
@@ -18,11 +17,8 @@
             <ul class="nav collapse" id="submenu2" role="menu" aria-labelledby="btn-2">
                 @foreach (var lang in Model.Languages)
                 {
-                    <li>@lang.Language</li>
+                    <li><a href="#">@lang.Language</a></li>
                 }
-                @*<li><a href="#">English</a></li>
-                <li><a href="#">Hindi</a></li>
-                <li><a href="#">Tamil</a></li>*@
             </ul>
         </li>
         <li><a href="#">Actors</a></li>
