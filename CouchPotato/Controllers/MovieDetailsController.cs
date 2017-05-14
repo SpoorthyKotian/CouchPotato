@@ -32,7 +32,7 @@ namespace CouchPotato.Controllers
             }
 
             List<string> actors = new List<string>();
-            foreach(var actor in db.MovieCast.Join(db.Actors, mc => mc.ActorId, a => a.ID, (mc, a) => new { MovieCast = mc, Actors = a})
+            foreach (var actor in db.MovieCast.Join(db.Actors, mc => mc.ActorId, a => a.ID, (mc, a) => new { MovieCast = mc, Actors = a })
                 .Where(m => m.MovieCast.MovieId == id))
             {
                 actors.Add(actor.Actors.Name);
@@ -54,7 +54,12 @@ namespace CouchPotato.Controllers
             movieDetail.Genres = String.Join(", ", genres);
             movieDetail.Actors = String.Join(", ", actors);
 
-            return View(movieDetail);
+            HomeView homefilter = new HomeView();
+            homefilter.MovieDetailView = movieDetail;
+            homefilter.Genre = db.Genres.ToList();
+            homefilter.Languages = db.Languages.ToList();
+
+            return this.View(homefilter);
         }
 
         protected override void Dispose(bool disposing)

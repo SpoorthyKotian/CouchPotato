@@ -172,6 +172,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ActorsController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HardDrivesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -199,7 +200,7 @@
     <Compile Include="Models\OmdbApi.cs" />
     <Compile Include="Models\Types.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\HomeFilter.cs" />
+    <Compile Include="Models\HomeView.cs" />
     <Compile Include="ViewModels\MovieDetail.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -270,6 +271,7 @@
     <Content Include="Views\Types\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_PublicSideNav.cshtml" />
     <Content Include="Views\Session\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Actors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

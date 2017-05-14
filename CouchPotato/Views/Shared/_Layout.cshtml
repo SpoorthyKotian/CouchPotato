@@ -23,7 +23,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Admin", "Login", "Session")</li>
                 </ul>
-                @if (Session["UserId"] != null)
+                @if (User.Identity.IsAuthenticated)
                 {
                     <ul class="nav navbar-nav pull-right">
                         <li>@Html.ActionLink("Logout", "Logout", "Session")</li>

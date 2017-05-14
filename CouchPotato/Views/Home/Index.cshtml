@@ -1,4 +1,4 @@
-﻿@model CouchPotato.Models.HomeFilter
+﻿@model CouchPotato.Models.HomeView
 
 @{
     ViewBag.Title = "Home Page";
@@ -7,9 +7,85 @@
 <div style="font-family:Arial">
     <h2>Welcome to Couch Potato</h2>
     <hr />
-    <div class="row">
+    @using (Html.BeginForm("Index", "MoviesList", FormMethod.Get))
+    {
+        <p>
+            Search by Movie name: @Html.TextBox("SearchMovie", ViewBag.CurrentFilter as string)
+            <input type="submit" value="Search" class="btn btn-info" />
+        </p>
+    }
 
-        @foreach (var item in Model.MovieDetails)
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Filter By:</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuGen" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Genre
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuGen">
+                    @foreach (var gen in Model.Genre)
+                    {
+                        <li><a href="#">@gen.Genre</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Language
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLang">
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Hindi</a></li>
+                    <li><a href="#">Kannada</a></li>
+                    <li><a href="#">Others</a></li>
+                    @*@foreach (var lang in Model.Languages)
+                        {
+                         <li><a href="#">@lang.Language</a></li>
+                        }*@
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Release Year
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuYear">
+                    @for (int year = 1990; year <= DateTime.Today.Year; year++)
+                    {
+                        <li><a href="#">@year</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuRate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Ratings
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuRate">
+                    @for (int rate = 1; rate <= 10; rate++)
+                    {
+                        <li><a href="#">@rate</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model.Movies)
         {
             <div class="col-md-3" style="text-align:center; margin-top: 30px;">
                 <a href="@Url.RouteUrl("MovieDetails", new { id = item.MovieId })"> <img src="@item.Poster" id="@item.MovieId" width="200" /> </a>

@@ -1,52 +1,52 @@
-﻿@model CouchPotato.ViewModels.MovieDetail
+﻿@model CouchPotato.Models.HomeView
 
 @{
     ViewBag.Title = "Movie Details";
 }
 
 <div style="font-family:Arial">
-    <h2>@Html.DisplayFor(model => model.MoviesList.MovieName)</h2>
+    <h2>@Html.DisplayFor(model => model.MovieDetailView.MoviesList.MovieName)</h2>
     <hr />
     <div class="row" style="margin-bottom:10px">
         <div class="col-md-3">
-            <img src="@Model.MovieDetails.Poster" width="200" />
+            <img src="@Model.MovieDetailView.MovieDetails.Poster" width="200" />
         </div>
         <div class="col-md-9">
-            <h4> @Html.DisplayFor(model => model.MovieDetails.Plot)</h4>
+            <h4> @Html.DisplayFor(model => model.MovieDetailView.MovieDetails.Plot)</h4>
             <div class="row" style="margin-top:10px">
                 <div class="col-md-9">
                     <dl class="dl-horizontal">
 
                         <dt>
-                            @Html.DisplayNameFor(model => model.MovieDetails.Year)
+                            @Html.DisplayNameFor(model => model.MovieDetailView.MovieDetails.Year)
                         </dt>
 
                         <dd>
-                            @Html.DisplayFor(model => model.MovieDetails.Year)
+                            @Html.DisplayFor(model => model.MovieDetailView.MovieDetails.Year)
                         </dd>
 
                         <dt>
-                            @Html.DisplayNameFor(model => model.MovieDetails.Runtime)
+                            @Html.DisplayNameFor(model => model.MovieDetailView.MovieDetails.Runtime)
                         </dt>
 
                         <dd>
-                            @Html.DisplayFor(model => model.MovieDetails.Runtime)
+                            @Html.DisplayFor(model => model.MovieDetailView.MovieDetails.Runtime)
                         </dd>
 
                         <dt>
-                            @Html.DisplayNameFor(model => model.MovieDetails.Language)
+                            @Html.DisplayNameFor(model => model.MovieDetailView.MovieDetails.Language)
                         </dt>
 
                         <dd>
-                            @Html.DisplayFor(model => model.MovieDetails.Language)
+                            @Html.DisplayFor(model => model.MovieDetailView.MovieDetails.Language)
                         </dd>
                        
                         <dt>
-                            @Html.DisplayNameFor(model => model.Genres)
+                            @Html.DisplayNameFor(model => model.MovieDetailView.Genres)
                         </dt>
 
                         <dd>
-                            @Html.DisplayFor(model => model.Genres)
+                            @Html.DisplayFor(model => model.MovieDetailView.Genres)
                         </dd>
 
                         <dt>
@@ -58,14 +58,14 @@
                         </dd>
 
                         <dt>
-                            @Html.DisplayNameFor(model => model.MovieDetails.IMDBRating)
+                            @Html.DisplayNameFor(model => model.MovieDetailView.MovieDetails.IMDBRating)
                         </dt>
 
                         <dd>
                            
                             @for (int i = 1; i <= 5; i++)
                             {
-                                if (i <= Model.MovieDetails.IMDBRating / 2)
+                                if (i <= Model.MovieDetailView.MovieDetails.IMDBRating / 2)
                                 {
                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                 }
@@ -75,7 +75,7 @@
                                 }
 
                             }
-                             (@Html.DisplayFor(model => model.MovieDetails.IMDBRating)/10) 
+                             (@Html.DisplayFor(model => model.MovieDetailView.MovieDetails.IMDBRating)/10) 
                         </dd>
 
                     </dl>
